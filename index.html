@@ -4,128 +4,188 @@
 <meta charset="UTF-8">
 <title>Sorry Sanjana 💖</title>
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Segoe UI', sans-serif;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffd6e8, #fff1f7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
 
-    .card {
-        background: white;
-        padding: 35px 45px;
-        border-radius: 25px;
-        text-align: center;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-        animation: pop 1s ease;
-        z-index: 1;
-    }
+/* Card */
+.card {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.25);
+    animation: pop 1s ease;
+    z-index: 2;
+}
 
-    h1 {
-        color: #e63946;
-        margin-bottom: 5px;
-        font-size: 32px;
-    }
+h1 {
+    color: #ff4d6d;
+    font-size: 34px;
+    margin-bottom: 8px;
+}
 
-    .name {
-        font-size: 32px;
-        font-weight: bold;
-        color: #ff1e56;
-        margin-bottom: 15px;
-        animation: glow 2s infinite alternate, beat 1.2s infinite;
-        text-shadow:
-            0 0 5px #ff1e56,
-            0 0 10px #ff4d6d,
-            0 0 20px #ff7eb3,
-            0 0 40px #ffd6e0;
-    }
+/* Name + Sparkles */
+.name-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 18px;
+}
 
-    p {
-        font-size: 18px;
-        color: #333;
-        line-height: 1.6;
-    }
+.name {
+    font-size: 38px;
+    font-weight: bold;
+    color: #ff1e56;
+    animation: glow 2.5s infinite alternate, beat 1.2s infinite;
+    text-shadow:
+        0 0 8px #ff4d6d,
+        0 0 18px #ff85b3,
+        0 0 35px #ffd1e6;
+}
 
-    .heart {
-        position: absolute;
-        color: #ff1e56;
-        animation: float linear infinite;
-        user-select: none;
-    }
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff85b3;
+    opacity: 0;
+    animation: sparkle 2s infinite;
+}
 
-    @keyframes glow {
-        from {
-            text-shadow:
-                0 0 5px #ff1e56,
-                0 0 10px #ff4d6d,
-                0 0 20px #ff7eb3;
-        }
-        to {
-            text-shadow:
-                0 0 15px #ff1e56,
-                0 0 30px #ff4d6d,
-                0 0 60px #ffd6e0;
-        }
-    }
+p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #444;
+}
 
-    @keyframes beat {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-    }
+/* Hearts & Falling Hearts */
+.heart {
+    position: absolute;
+    color: #ff4d6d;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+}
 
-    @keyframes float {
-        0% {
-            transform: translateY(110vh) scale(0.4);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-10vh) scale(1.6);
-            opacity: 0;
-        }
-    }
+.falling-heart {
+    position: absolute;
+    opacity: 0.9;
+    animation: fall linear infinite;
+    pointer-events: none;
+}
 
-    @keyframes pop {
-        0% {
-            transform: scale(0.4);
-            opacity: 0;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
+/* Animations */
+@keyframes glow {
+    from { text-shadow: 0 0 8px #ff4d6d, 0 0 18px #ff85b3; }
+    to { text-shadow: 0 0 20px #ff4d6d, 0 0 50px #ffd1e6; }
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+@keyframes sparkle {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+/* Hearts float near card */
+@keyframes floatUp {
+    0% { transform: translateY(20vh) scale(0.6); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-30vh) scale(1.2); opacity: 0; }
+}
+
+/* Falling hearts from top */
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
     }
+    20% { opacity: 1; }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.9;
+    }
+}
+
+@keyframes pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
 </style>
 </head>
+
 <body>
 
 <div class="card">
     <h1>I'm Sorry 💔</h1>
-    <div class="name">Sanjana 💖</div>
+
+    <div class="name-container">
+        <div class="name">Sanjana 💖</div>
+        <div class="sparkle" style="top:-10px; left:10px;"></div>
+        <div class="sparkle" style="top:0; right:-12px; animation-delay:0.5s"></div>
+        <div class="sparkle" style="bottom:-10px; left:45%; animation-delay:1s"></div>
+        <div class="sparkle" style="top:50%; left:-12px; animation-delay:1.5s"></div>
+    </div>
+
     <p>
-        My love, I never meant to hurt you.<br>
-        Please forgive me.<br>
-        You mean the world to me ❤️
+        I never meant to hurt you.<br>
+        Please forgive me, my love.<br>
+        You mean everything to me ❤️
     </p>
 </div>
 
 <script>
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 28 + 15) + "px";
-        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-        document.body.appendChild(heart);
+const centerX = window.innerWidth / 2;
 
-        setTimeout(() => heart.remove(), 6000);
-    }
+// Floating hearts ❤️ near card
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
 
-    setInterval(createHeart, 100); // MORE hearts 💕
+    const offset = Math.random() * 200 - 100;
+    heart.style.left = (centerX + offset) + "px";
+    heart.style.fontSize = (Math.random() * 12 + 18) + "px";
+    // faster floating
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+
+// Falling hearts from top 💗❣️💘🫶
+const fallingHearts = ["💗", "❣️", "💘", "🫶"];
+
+function createFallingHeart() {
+    const fh = document.createElement("div");
+    fh.className = "falling-heart";
+    fh.innerHTML = fallingHearts[Math.floor(Math.random() * fallingHearts.length)];
+
+    fh.style.left = Math.random() * 100 + "vw";
+    fh.style.fontSize = (Math.random() * 14 + 18) + "px";
+    // faster falling
+    fh.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+    document.body.appendChild(fh);
+    setTimeout(() => fh.remove(), 8000);
+}
+
+// Intervals — faster creation
+setInterval(createHeart, 400);   // more hearts quickly
+setInterval(createFallingHeart, 300); // more falling hearts quickly
 </script>
 
 </body>
