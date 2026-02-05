@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sorry Sanjana 💖</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: white;
+        padding: 35px 45px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        animation: pop 1s ease;
+        z-index: 1;
+    }
+
+    h1 {
+        color: #e63946;
+        margin-bottom: 5px;
+        font-size: 32px;
+    }
+
+    .name {
+        font-size: 32px;
+        font-weight: bold;
+        color: #ff1e56;
+        margin-bottom: 15px;
+        animation: glow 2s infinite alternate, beat 1.2s infinite;
+        text-shadow:
+            0 0 5px #ff1e56,
+            0 0 10px #ff4d6d,
+            0 0 20px #ff7eb3,
+            0 0 40px #ffd6e0;
+    }
+
+    p {
+        font-size: 18px;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .heart {
+        position: absolute;
+        color: #ff1e56;
+        animation: float linear infinite;
+        user-select: none;
+    }
+
+    @keyframes glow {
+        from {
+            text-shadow:
+                0 0 5px #ff1e56,
+                0 0 10px #ff4d6d,
+                0 0 20px #ff7eb3;
+        }
+        to {
+            text-shadow:
+                0 0 15px #ff1e56,
+                0 0 30px #ff4d6d,
+                0 0 60px #ffd6e0;
+        }
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(110vh) scale(0.4);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh) scale(1.6);
+            opacity: 0;
+        }
+    }
+
+    @keyframes pop {
+        0% {
+            transform: scale(0.4);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>I'm Sorry 💔</h1>
+    <div class="name">Sanjana 💖</div>
+    <p>
+        My love, I never meant to hurt you.<br>
+        Please forgive me.<br>
+        You mean the world to me ❤️
+    </p>
+</div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 28 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 100); // MORE hearts 💕
+</script>
+
+</body>
+</html>
+
